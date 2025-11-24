@@ -1,0 +1,24 @@
+{
+  "name": "nodemailersample-with-google-app-password",
+  "version": "1.0.0",
+  "description": "Sample code to use nodemailer to send emails using a google account which is authenticated using AppPassword.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodemailer",
+    "email",
+    "gmail",
+    "smtp",
+    "nodejs",
+    "google-app-password"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "nodemailer": "^7.0.10"
+  }
+}

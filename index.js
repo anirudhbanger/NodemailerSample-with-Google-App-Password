@@ -25,7 +25,20 @@ const mailOptions = {
 // Send email
 transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-        console.log('Error occurred:', error);
+        console.log('Error occurred:', error.message);
+        console.log('Error code:', error.code);
+        
+        // Provide helpful troubleshooting hints
+        if (error.code === 'EAUTH' || error.responseCode === 535) {
+            console.log('\nTroubleshooting tip: Authentication failed. Please check:');
+            console.log('- You are using an App Password, not your regular Gmail password');
+            console.log('- 2-Step Verification is enabled on your Google Account');
+            console.log('- The App Password is entered correctly in your .env file');
+        } else if (error.code === 'EDNS' || error.code === 'ENOTFOUND') {
+            console.log('\nTroubleshooting tip: Network connection issue. Please check:');
+            console.log('- Your internet connection is working');
+            console.log('- Firewall/antivirus is not blocking the connection');
+        }
     } else {
         console.log('Email sent successfully!');
         console.log('Message ID:', info.messageId);
